@@ -6,7 +6,7 @@
 #
 FROM maxamillion/origin-base-armhfp
 
-RUN yum install -y hg golang golang-pkg-darwin-amd64 golang-pkg-windows-amd64 && yum clean all
+RUN dnf install -y hg golang golang-pkg-darwin-amd64 golang-pkg-windows-amd64 && dnf clean all
 
 ENV GOPATH /go
 
