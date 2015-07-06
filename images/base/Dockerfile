@@ -8,5 +8,5 @@ FROM maxamillion/fedora-armhfp
 
 # components from EPEL must be installed in a separate yum install step
 RUN dnf -y update && \
-    dnf install -y git tar wget socat hostname sysvinit-tools util-linux && \
+    dnf install -y git tar wget socat hostname util-linux && \
     dnf clean all
