@@ -4,7 +4,7 @@
 #
 # The standard name for this image is openshift/origin-release
 #
-FROM openshift/origin-base
+FROM maxamillion/origin-base-armhfp
 
 RUN yum install -y hg golang golang-pkg-darwin-amd64 golang-pkg-windows-amd64 && yum clean all
 

@@ -16,6 +16,6 @@ source "${OS_ROOT}/hack/common.sh"
 cd "${OS_ROOT}"
 
 # Build the images
-docker build --tag openshift/origin-base                   "${OS_ROOT}/images/base"
-docker build --tag openshift/origin-haproxy-router-base    "${OS_ROOT}/images/router/haproxy-base"
-docker build --tag openshift/origin-release                "${OS_ROOT}/images/release"
+docker build --tag maxamillion/origin-base-armhfp          "${OS_ROOT}/images/base"
+docker build --tag maxamillion/origin-haproxy-router-base-armhfp "${OS_ROOT}/images/router/haproxy-base"
+docker build --tag maxamillion/origin-release-armhfp                "${OS_ROOT}/images/release"

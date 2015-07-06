@@ -6,7 +6,7 @@
 #
 # The standard name for this image is openshift/origin
 #
-FROM openshift/origin-base
+FROM maxamillion/origin-base-armhfp
 
 RUN yum install -y golang && yum clean all
 
