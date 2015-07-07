@@ -8,7 +8,7 @@
 #
 FROM maxamillion/origin-base-armhfp
 
-RUN dnf install -y golang && dnf clean all
+RUN dnf install -y golang which && dnf clean all
 
 WORKDIR /go/src/github.com/openshift/origin
 ADD .   /go/src/github.com/openshift/origin
