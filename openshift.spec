@@ -26,7 +26,7 @@ Name:           openshift
 # Version is not kept up to date and is intended to be set by tito custom
 # builders provided in the rel-eng directory of this project
 Version:        1.0.5
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Open Source Platform as a Service by Red Hat
 License:        ASL 2.0
 URL:            https://%{import_path}
@@ -313,9 +313,11 @@ install -p -m 644 rel-eng/completions/bash/* %{buildroot}%{_sysconfdir}/bash_com
 %dir %config(noreplace) %{_sysconfdir}/origin
 
 %pre
-# If /etc/openshift exists symlink it to /etc/origin
+# If /etc/openshift exists and /etc/origin doesn't, symlink it to /etc/origin
 if [ -d "%{_sysconfdir}/openshift" ]; then
-  ln -s %{_sysconfdir}/openshift %{_sysconfdir}/origin
+  if ! [ -d "%{_sysconfdir}/origin" ]; then
+    ln -s %{_sysconfdir}/openshift %{_sysconfdir}/origin
+  fi
 fi
 
 %files master
@@ -443,9 +445,11 @@ fi
 %dir %config(noreplace) %{_sysconfdir}/origin
 
 %pre -n atomic-enterprise
-# If /etc/openshift exists symlink it to /etc/origin
+# If /etc/openshift exists and /etc/origin doesn't, symlink it to /etc/origin
 if [ -d "%{_sysconfdir}/openshift" ]; then
-  ln -s %{_sysconfdir}/openshift %{_sysconfdir}/origin
+  if ! [ -d "%{_sysconfdir}/origin" ]; then
+    ln -s %{_sysconfdir}/openshift %{_sysconfdir}/origin
+  fi
 fi
 
 %files -n atomic-enterprise-master
@@ -565,6 +569,9 @@ fi
 # ===
 
 %changelog
+* Fri Aug 28 2015 Adam Miller <maxamillion@fedoraproject.org> - 1.0.5-4
+- Fix origin symlink in pre section for openshift and atomic-enterprise pkgs
+
 * Fri Aug 28 2015 Adam Miller <maxamillion@fedoraproject.org> - 1.0.5-3
 - Fix typo in docker_version
 - Unghost /etc/sysconfig/openshift-master
