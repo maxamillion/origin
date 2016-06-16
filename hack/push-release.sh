@@ -36,25 +36,25 @@ if [[ -z "${source_tag}" ]]; then
 fi
 
 base_images=(
-  openshift/origin-base
-  openshift/origin-release
+  maxamillion/origin-base
+  maxamillion/origin-release
 )
 images=(
-  openshift/origin
-  openshift/origin-pod
-  openshift/origin-deployer
-  openshift/origin-docker-builder
-  openshift/origin-docker-registry
-  openshift/origin-keepalived-ipfailover
-  openshift/origin-sti-builder
-  openshift/origin-haproxy-router
-  openshift/origin-f5-router
-  openshift/origin-egress-router
-  openshift/origin-recycler
-  openshift/origin-gitserver
-  openshift/hello-openshift
-  openshift/openvswitch
-  openshift/node
+  maxamillion/origin
+  maxamillion/origin-pod
+  maxamillion/origin-deployer
+  maxamillion/origin-docker-builder
+  maxamillion/origin-docker-registry
+  maxamillion/origin-keepalived-ipfailover
+  maxamillion/origin-sti-builder
+  maxamillion/origin-haproxy-router
+  maxamillion/origin-f5-router
+  maxamillion/origin-egress-router
+  maxamillion/origin-recycler
+  maxamillion/origin-gitserver
+  maxamillion/hello-openshift
+  maxamillion/openvswitch
+  maxamillion/node
 )
 
 PUSH_OPTS=""

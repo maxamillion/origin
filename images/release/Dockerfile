@@ -2,9 +2,9 @@
 # This is the image that controls the standard build environment for releasing OpenShift Origin.
 # It is responsible for performing a cross platform build of OpenShift.
 #
-# The standard name for this image is openshift/origin-release
+# The standard name for this image is maxamillion/origin-release
 #
-FROM openshift/origin-base
+FROM maxamillion/origin-base
 
 ENV VERSION=1.6 \
     GOARM=5 \
@@ -16,9 +16,9 @@ ENV PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 RUN mkdir $TMPDIR && \
     INSTALL_PKGS="gcc zip mercurial" && \
-    yum install -y $INSTALL_PKGS && \
+    dnf install -y --allowerasing $INSTALL_PKGS && \
     rpm -V $INSTALL_PKGS && \
-    yum clean all && \
+    dnf clean all && \
     curl https://storage.googleapis.com/golang/go$VERSION.linux-amd64.tar.gz | tar -C /usr/local -xzf - && \
     go get golang.org/x/tools/cmd/cover github.com/tools/godep github.com/golang/lint/golint && \
     touch /os-build-image

@@ -2,9 +2,9 @@
 # This is the integrated OpenShift Origin Docker registry. It is configured to
 # publish metadata to OpenShift to provide automatic management of images on push.
 #
-# The standard name for this image is openshift/origin-docker-registry
+# The standard name for this image is maxamillion/origin-docker-registry
 #
-FROM openshift/origin-base
+FROM maxamillion/origin-base
 
 RUN INSTALL_PKGS="tree findutils epel-release" && \
     yum install -y $INSTALL_PKGS && \

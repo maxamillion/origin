@@ -4,7 +4,7 @@
 #
 # The standard name for this image is openshift/origin-haproxy-router-base
 #
-FROM openshift/origin-base
+FROM maxamillion/origin-base
 
 #
 # Note: /var is changed to 777 to allow access when running this container as a non-root uid

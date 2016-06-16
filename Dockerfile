@@ -6,7 +6,7 @@
 #
 # The standard name for this image is openshift/origin
 #
-FROM openshift/origin-base
+FROM maxamillion/origin-base
 
 RUN yum install -y golang && yum clean all
 
@@ -15,7 +15,8 @@ ADD .   /go/src/github.com/openshift/origin
 ENV GOPATH /go
 ENV PATH $PATH:$GOROOT/bin:$GOPATH/bin
 
-RUN go get github.com/openshift/origin && \
+RUN dnf install -y golang && dnf clean all && \
+    go get github.com/openshift/origin && \
     hack/build-go.sh && \
     cp _output/local/bin/linux/amd64/* /usr/bin/ && \
     mkdir -p /var/lib/origin

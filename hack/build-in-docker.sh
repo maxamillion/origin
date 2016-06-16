@@ -7,7 +7,7 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-function absolute_path() { 
+function absolute_path() {
   pushd . > /dev/null
   [ -d "$1" ] && cd "$1" && dirs -l +0
   popd > /dev/null
@@ -28,6 +28,6 @@ if [ -d /sys/fs/selinux ]; then
     fi
 fi
 
-docker run -e "OWNER_GROUP=$UID:$GROUPS" --rm -v "$(absolute_path $OS_ROOT):/go/${origin_path}" openshift/origin-release /usr/bin/openshift-origin-build.sh $@
+docker run -e "OWNER_GROUP=$UID:$GROUPS" --rm -v "$(absolute_path $OS_ROOT):/go/${origin_path}" maxamillion/origin-release /usr/bin/openshift-origin-build.sh $@
 
 ret=$?; ENDTIME=$(date +%s); echo "$0 took $(($ENDTIME - $STARTTIME)) seconds"; exit "$ret"

@@ -10,7 +10,7 @@
 #
 # The standard name for this image is openshift/origin-sti-builder
 #
-FROM openshift/origin
+FROM maxamillion/origin-base:f24
 
 ENV HOME /root
 ENTRYPOINT ["/usr/bin/openshift-sti-build"]

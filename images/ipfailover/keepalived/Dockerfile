@@ -1,9 +1,9 @@
 #
 # VIP failover monitoring container for OpenShift Origin.
 #
-# ImageName: openshift/origin-keepalived-ipfailover
+# ImageName: maxamillion/origin-keepalived-ipfailover
 #
-FROM openshift/origin-base
+FROM maxamillion/origin
 
 RUN INSTALL_PKGS="kmod keepalived iproute psmisc nmap-ncat net-tools" && \
     yum install -y $INSTALL_PKGS && \

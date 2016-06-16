@@ -10,7 +10,7 @@
 #
 # The standard name for this image is openshift/origin-docker-builder
 #
-FROM openshift/origin
+FROM maxamillion/origin
 
 ENV HOME /root
 ENTRYPOINT ["/usr/bin/openshift-docker-build"]

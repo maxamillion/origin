@@ -19,8 +19,8 @@ os::log::install_errexit
 cd "${OS_ROOT}"
 
 # Build the images
-docker build --tag openshift/origin-base                   "${OS_ROOT}/images/base"
-docker build --tag openshift/origin-haproxy-router-base    "${OS_ROOT}/images/router/haproxy-base"
-docker build --tag openshift/origin-release                "${OS_ROOT}/images/release"
+docker build maxamillion/origin-base                   "${OS_ROOT}/images/base"
+docker build maxamillion/origin-haproxy-router-base    "${OS_ROOT}/images/router/haproxy-base"
+docker build maxamillion/origin-release                "${OS_ROOT}/images/release"
 
 ret=$?; ENDTIME=$(date +%s); echo "$0 took $(($ENDTIME - $STARTTIME)) seconds"; exit "$ret"

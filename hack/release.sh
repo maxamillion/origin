@@ -38,10 +38,10 @@ function removeimage() {
   done
 }
 
-removeimage openshift/origin-base openshift/origin-release openshift/origin-haproxy-router-base
-docker pull openshift/origin-base
-docker pull openshift/origin-release
-docker pull openshift/origin-haproxy-router-base
+removeimage maxamillion/origin-base maxamillion/origin-release maxamillion/origin-haproxy-router-base
+docker pull maxamillion/origin-base
+docker pull maxamillion/origin-release
+docker pull maxamillion/origin-haproxy-router-base
 
 hack/build-release.sh
 hack/build-images.sh
