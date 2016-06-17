@@ -3,12 +3,8 @@
 #
 # The standard name for this image is openshift/origin-haproxy-router
 #
-FROM maxamillion/origin
+FROM maxamillion/origin-base
 
-RUN dnf -y install haproxy && \
-    mkdir -p /var/lib/haproxy/router/{certs,cacerts} && \
-    mkdir -p /var/lib/haproxy/{conf,run,bin,log} && \
-    touch /var/lib/haproxy/conf/{{os_http_be,os_edge_http_be,os_tcp_be,os_sni_passthrough,os_reencrypt,os_edge_http_expose,os_edge_http_redirect}.map,haproxy.config} && \
 ADD conf/ /var/lib/haproxy/conf/
 ADD reload-haproxy /var/lib/haproxy/reload-haproxy
 ADD bin/openshift /usr/bin/openshift
@@ -18,6 +14,7 @@ ADD bin/openshift /usr/bin/openshift
 #       with gid support.
 # Note2: cap_net_bind_service must be granted to haproxy to allow a non-root uid to bind to low ports
 #
+RUN dnf -y install haproxy
 RUN ln -s /usr/bin/openshift /usr/bin/openshift-router && \
     chmod -R 777 /var && \
     setcap 'cap_net_bind_service=ep' /usr/sbin/haproxy

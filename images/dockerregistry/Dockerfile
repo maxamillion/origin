@@ -6,10 +6,10 @@
 #
 FROM maxamillion/origin-base
 
-RUN INSTALL_PKGS="tree findutils epel-release" && \
-    yum install -y $INSTALL_PKGS && \
+RUN INSTALL_PKGS="tree findutils" && \
+    dnf install -y $INSTALL_PKGS && \
     rpm -V $INSTALL_PKGS && \
-    yum clean all
+    dnf clean all
 
 # The registry doesn't require a privileged user.
 USER 1001
