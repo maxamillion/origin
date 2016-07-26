@@ -14,12 +14,10 @@ FROM maxamillion/origin
 # Based on work by: Peter Schiffer <pschiffe@redhat.com>
 MAINTAINER Devan Goodwin <dgoodwin@redhat.com>
 
-<<<<<<< HEAD
 # We need to install openvswitch for the client portions, the daemons are expected
 # to run in another container
 
-RUN curl -L -o /etc/yum.repos.d/maxamillion-fedora-origin-24.repo https://copr.fedorainfracloud.org/coprs/maxamillion/fedora-openshift/repo/fedora-24/maxamillion-fedora-openshift-fedora-24.repo && \
-    INSTALL_PKGS="libmnl libnetfilter_conntrack openvswitch libnfnetlink iptables iproute bridge-utils procps-ng ethtool socat openssl binutils xz kmod-libs kmod sysvinit-tools device-mapper-libs dbus ceph-common iscsi-initiator-utils" && \
+RUN INSTALL_PKGS="libmnl libnetfilter_conntrack openvswitch libnfnetlink iptables iproute bridge-utils procps-ng ethtool socat openssl binutils xz kmod-libs kmod device-mapper-libs dbus ceph-common iscsi-initiator-utils" && \
     dnf install -y $INSTALL_PKGS && \
     rpm -V $INSTALL_PKGS && \
     dnf clean all

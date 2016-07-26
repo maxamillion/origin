@@ -1,4 +1,4 @@
-FROM openshift/origin
+FROM maxamillion/origin
 MAINTAINER Aaron Weitekamp <aweiteka@redhat.com>
 
 ADD install.sh run.sh uninstall.sh /container/bin/

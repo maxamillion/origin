@@ -7,8 +7,6 @@ FROM maxamillion/origin-base
 
 MAINTAINER Scott Dodson <sdodson@redhat.com>
 
-ADD https://copr.fedoraproject.org/coprs/maxamillion/origin-next/repo/epel-7/maxamillion-origin-next-epel-7.repo /etc/yum.repos.d/
-
 RUN INSTALL_PKGS="openvswitch" && \
     dnf install -y $INSTALL_PKGS && \
     rpm -V $INSTALL_PKGS && \

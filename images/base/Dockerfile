@@ -4,7 +4,7 @@
 #
 # The standard name for this image is openshift/origin-base
 #
-FROM maxamillion/fedora:24
+FROM fedora:24
 
 RUN dnf update -y --refresh --allowerasing && \
     dnf clean all
