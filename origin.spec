@@ -207,7 +207,11 @@ of docker.  Exclude those versions of docker.
 
 %build
 # Create Binaries
+%if 0%{?make_redistributable}
 %{os_git_vars} hack/build-cross.sh
+%else
+%{os_git_vars} hack/build-go.sh
+%endif
 
 %if 0%{build_tests}
 # Create extended.test
@@ -549,12 +553,12 @@ fi
 /usr/sbin/%{name}-docker-excluder
 
 %post docker-excluder
-# we always want to run this, since the 
+# we always want to run this, since the
 #   package-list may be different with each version
 %{name}-docker-excluder exclude
 
 %preun docker-excluder
-# we always want to clear this out, since the 
+# we always want to clear this out, since the
 #   package-list may be different with each version
 /usr/sbin/%{name}-docker-excluder unexclude
 
