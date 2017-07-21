@@ -38,6 +38,16 @@ if [[ "${host_platform}" == "linux/s390x" ]]; then
   platforms+=( "linux/s390x" )
 fi
 
+# Special case armv7hl
+if [[ "${host_platform}" == "linux/arm" ]]; then
+  platforms+=( "linux/arm" )
+fi
+
+# Special case ppc64
+if [[ "${host_platform}" == "linux/ppc64" ]]; then
+  platforms+=( "linux/ppc64" )
+fi
+
 # On linux platforms, build images
 if [[ "${host_platform}" == linux/* ]]; then
   image_platforms+=( "${host_platform}" )
