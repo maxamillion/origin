@@ -41,6 +41,11 @@ if [[ "${host_platform}" == "linux/s390x" ]]; then
   platforms+=( "linux/s390x" )
 fi
 
+# Special case 386
+if [[ "${host_platform}" == "linux/386" ]]; then
+  platforms+=( "linux/386" )
+fi
+
 # On linux platforms, build images
 if [[ "${host_platform}" == linux/* ]]; then
   image_platforms+=( "${host_platform}" )

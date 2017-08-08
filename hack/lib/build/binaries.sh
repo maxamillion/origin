@@ -427,6 +427,7 @@ function os::build::place_bins() {
           OS_RELEASE_ARCHIVE="openshift-origin-client-tools" os::build::archive::zip "${OS_BINARY_RELEASE_CLIENT_MAC[@]}"
         elif [[ $platform == "linux-32bit" ]]; then
           OS_RELEASE_ARCHIVE="openshift-origin-client-tools" os::build::archive::tar "${OS_BINARY_RELEASE_CLIENT_LINUX[@]}"
+          OS_RELEASE_ARCHIVE="openshift-origin-server" os::build::archive::tar "${OS_BINARY_RELEASE_SERVER_LINUX[@]}"
         elif [[ $platform == "linux-64bit" ]]; then
           OS_RELEASE_ARCHIVE="openshift-origin-client-tools" os::build::archive::tar "${OS_BINARY_RELEASE_CLIENT_LINUX[@]}"
           OS_RELEASE_ARCHIVE="openshift-origin-server" os::build::archive::tar "${OS_BINARY_RELEASE_SERVER_LINUX[@]}"
@@ -446,7 +447,7 @@ function os::build::place_bins() {
           echo "++ ERROR: No release type defined for $platform"
         fi
       else
-        if [[ $platform == "linux-64bit" || $platform == "linux-powerpc64" || $platform == "linux-arm64" || $platform == "linux-arm" || $platform == "linux-s390" ]]; then
+        if [[ $platform == "linux-64bit" || $platform == "linux-32bit" || $platform == "linux-powerpc64" || $platform == "linux-arm64" || $platform == "linux-arm" || $platform == "linux-s390" ]]; then
           os::build::archive::tar "./*"
         else
           echo "++ ERROR: No release type defined for $platform"
