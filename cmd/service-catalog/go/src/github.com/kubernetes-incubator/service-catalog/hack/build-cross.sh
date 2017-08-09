@@ -31,6 +31,11 @@ if [[ "${host_platform}" == "linux/arm64" ]]; then
   platforms+=( "linux/arm64" )
 fi
 
+# Special case arm
+if [[ "${host_platform}" == "linux/arm" ]]; then
+  platforms+=( "linux/arm" )
+fi
+
 # Special case i386
 if [[ "${host_platform}" == "linux/386" ]]; then
   platforms+=( "linux/386" )
